@@ -369,3 +369,81 @@ friend(romeo,benvolio).
 % Delete all matching clauses
 % retractall(likes(_,dancing)).
 % likes(_,dancing). = no
+
+% 14th - Lists
+
+% simple list
+% write([1, 2, 3, 4]). = [1, 2, 3, 4]
+
+% We can add items to a list with the | (List Constructor)
+% write([albert|[alice, bob]]), nl. = [albert, alice, bob]
+
+% Get the length of a list
+% length([1,2,3], X).
+
+% We can divide a list into its head and tail with |
+% [H|T] = [a,b,c].
+
+% We can get additional values by adding more variables to the left
+% of |
+%[X1, X2, X3, X4|T] = [a,b,c,d].
+
+% We can use the anonymous variable _ when we need to reference a
+% variable, but we don't want its value
+% Let's get the second value in the list
+% [_, X2, _, _|T] = [a,b,c,d].
+
+% Find out if a value is in a list with member
+% List1 = [a,b,c].
+% member(a, List1). = yes
+
+% We could also get all members of a list with a variable
+% member(X, [a, b, c, d]).
+
+% Reverse a list
+% reverse([1,2,3,4,5], X).
+
+% Concatenate 2 lists
+% append([1,2,3], [4,5,6], X).
+
+
+% Write items in list on separate line
+write_list([]).
+
+write_list([Head|Tail]) :-
+	write(Head), nl,
+	write_list(Tail).
+% write_list([1,2,3,4,5]). = Outputs the list
+
+% 15th - Strings
+
+% Convert a string into an Ascii character list
+% name('A random string', X).
+
+% Convert a Ascii character list into a string
+% name(X, [65,32,114,97,110,100,111,109,32,115,116,114,105,110,103]).
+
+% Append can join strings
+join_str(Str1, Str2, Str3) :-
+
+  % Convert strings into lists
+  name(Str1, StrList1),
+  name(Str2, StrList2),
+
+  % Combine string lists into new string list
+  append(StrList1, StrList2, StrList3),
+
+  % Convert list into a string
+  name(Str3, StrList3).
+
+% join_str('Another ', 'Random String', X). = X = 'Another Random String'
+
+% get the 1st char from a string
+/*
+name('Derek', List),
+nth0(0, List, FChar),
+put(FChar).
+*/
+
+% Get length of the string
+%atom_length('Derek',X).
